@@ -3,5 +3,5 @@ dist
 recovery
 BeefSpace_Lock.toml
 BeefSpace_User.toml
-package-lock.json
 node_modules
+package-lock.json

@@ -23,7 +23,7 @@ const build: Build = {
     platforms: {
         win32: {
             windows: {
-                archs: ['Win32', 'x64'],
+                archs: ['x64'],
             },
             android: {
                 archs: ['x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'],
