@@ -1,7 +1,8 @@
 {
   "name": "amoeba-beef",
   "scripts": {
-    "build": "cmake-ts-gen"
+    "build": "npx cmake-ts-gen@0.2.0",
+    "clean": "npx --yes rimraf build node_modules && npm i"
   },
   "devDependencies": {
     "cmake-ts-gen": "0.2.0"

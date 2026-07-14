@@ -1,0 +1,28 @@
+name: Build All
+run-name: Build for all platforms
+on: [push]
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ github.token }}
+          submodules: recursive
+      - uses: oven-sh/setup-bun@v2
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          bunx cmake-ts-gen
+          git add .
+          git commit -m "generated binary for ${{ matrix.os }}"
+          git fetch
+          git merge --no-ff
+          git push
+      

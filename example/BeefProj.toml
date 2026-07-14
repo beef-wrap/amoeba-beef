@@ -5,5 +5,3 @@ Dependencies = {corlib = "*", amoeba-beef = "*"}
 Name = "example"
 TargetType = "BeefGUIApplication"
 StartupObject = "example.Program"
-
-[Configs.Debug.Win64]
