@@ -36,7 +36,7 @@ jobs:
         with:
           version: 0.16.0
       - run: |
-          sudo apt-get install -y libhunspell-dev
+          sudo apt-get install -y libhunspell-dev libllvm22
           zig build --prefix libs -Dtarget=${{ matrix.target }}
           chmod +x ./BeefBuild/BeefBuild_d
           ./BeefBuild/BeefBuild_d -run
