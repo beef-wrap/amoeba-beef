@@ -8,7 +8,7 @@ static
 	[Test]
 	static void test()
 	{
-		first, create a solver:
+		// first, create a solver:
 		am_Solver* S = am_newsolver(null, null);
 
 		int ret;

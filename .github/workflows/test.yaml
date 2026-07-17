@@ -5,7 +5,7 @@ run-name: Run tests for all platforms
 on:
   push:
   workflow_dispatch:
-  
+
 jobs:
   build:
     strategy:
@@ -65,7 +65,7 @@ jobs:
           fileName: '${{ matrix.os }}.zip'
           extract: true
           extract-path: 'BeefBuild'
-      
+
       - name: Set Permissions
         run: chmod +x ./BeefBuild/BeefBuild
 
