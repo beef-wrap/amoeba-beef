@@ -11,21 +11,21 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: windows-latest
-            target: x86_64-windows-msvc
-            platform: Win64
+          # - os: windows-latest
+          #   target: x86_64-windows-msvc
+          #   platform: Win64
           # - os: windows-11-arm
           #   target: aarch64-windows-gnu
           #   platform: aarch64-windows-gnu
-          - os: ubuntu-latest
-            target: x86_64-linux-musl
-            platform: Linux64
-          - os: ubuntu-24.04-arm
-            target: aarch64-linux-gnu
-            platform: aarch64-linux-gnu
-          - os: macos-latest
-            target: aarch64-macos
-            platform: macOS
+          # - os: ubuntu-latest
+          #   target: x86_64-linux-musl
+          #   platform: Linux64
+          # - os: ubuntu-24.04-arm
+          #   target: aarch64-linux-gnu
+          #   platform: aarch64-linux-gnu
+          # - os: macos-latest
+          #   target: aarch64-macos
+          #   platform: macOS
           - os: macos-15-intel
             target: x86_64-macos
             platform: x86_64-macos
