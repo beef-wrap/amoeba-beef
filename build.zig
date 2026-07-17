@@ -1,0 +1,63 @@
+const std = @import("std");
+
+const optimize: []const std.builtin.OptimizeMode = &.{
+    .Debug,
+    .ReleaseSmall,
+};
+
+const targets: []const std.Target.Query = &.{
+    .{ .cpu_arch = .x86_64, .os_tag = .windows, .abi = .msvc },
+
+    .{ .cpu_arch = .x86_64, .os_tag = .linux, .abi = .musl },
+    .{ .cpu_arch = .aarch64, .os_tag = .linux, .abi = .musl },
+
+    .{ .cpu_arch = .x86_64, .os_tag = .macos },
+    .{ .cpu_arch = .aarch64, .os_tag = .macos },
+};
+
+const upstream_name = "upstream";
+
+const lib_name = "amoeba";
+
+const lib_name_debug = "amoeba_d";
+
+const sources = &.{"src/amoeba.c"};
+
+pub fn build(b: *std.Build) !void {
+    const upstream = b.dependency(upstream_name, .{});
+
+    for (optimize) |o| {
+        for (targets) |t| {
+            const mod = b.createModule(.{
+                .target = b.resolveTargetQuery(t),
+                .optimize = o,
+                .sanitize_c = .off,
+                .stack_check = false,
+                .stack_protector = false,
+                .single_threaded = true,
+            });
+
+            mod.linkSystemLibrary("c", .{});
+
+            mod.addIncludePath(upstream.path(""));
+
+            mod.addCSourceFiles(.{ .files = sources });
+
+            const lib = b.addLibrary(.{
+                .name = if (o == .Debug) lib_name_debug else lib_name,
+                .linkage = .static,
+                .root_module = mod,
+            });
+
+            const target_output = b.addInstallArtifact(lib, .{
+                .dest_dir = .{
+                    .override = .{
+                        .custom = try t.zigTriple(b.allocator),
+                    },
+                },
+            });
+
+            b.getInstallStep().dependOn(&target_output.step);
+        }
+    }
+}

@@ -5,7 +5,10 @@ Name = "amoeba-beef"
 DefaultNamespace = "amoeba"
 
 [Configs.Debug.Win64]
-LibPaths = ["$(ProjectDir)\\libs\\windows\\x64\\amoeba_d.lib"]
+LibPaths = ["$(ProjectDir)\\libs\\x86_64-windows-msvc\\amoeba_d.lib"]
 
 [Configs.Release.Win64]
-LibPaths = ["$(ProjectDir)\\libs\\windows\\x64\\amoeba.lib"]
+LibPaths = ["$(ProjectDir)\\libs\\x86_64-windows-msvc\\amoeba.lib"]
+
+[Configs.Test.Win64]
+LibPaths = ["$(ProjectDir)\\libs\\x86_64-windows-msvc\\amoeba_d.lib"]
