@@ -1,7 +1,9 @@
 FileVersion = 1
-Dependencies = {corlib = "*", amoeba-beef = "*"}
 
 [Project]
 Name = "example"
-TargetType = "BeefGUIApplication"
 StartupObject = "example.Program"
+
+[Dependencies]
+corlib = "*"
+amoeba-beef = "*"

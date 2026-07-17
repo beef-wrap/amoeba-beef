@@ -58,6 +58,8 @@ static class Program
 		// and m should in middle of l and r:
 		Debug.Assert(m == 70.f);
 
+		Console.WriteLine($"{l} | {m} | {r}");
+
 		// done with solver
 		am_delsolver(S);
 		return 0;
