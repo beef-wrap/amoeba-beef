@@ -15,8 +15,8 @@ jobs:
           #   target: x86_64-windows-msvc
           #   platform: Win64
           - os: windows-11-arm
-            target: aarch64-windows-msvc
-            platform: aarch64-windows-msvc
+            target: aarch64-windows-gnu
+            platform: aarch64-windows-gnu
           # - os: ubuntu-latest
           #   target: x86_64-linux-musl
           #   platform: Linux64
