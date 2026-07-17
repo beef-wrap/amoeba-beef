@@ -40,20 +40,20 @@ LibPaths = ["$(ProjectDir)\\libs\\aarch64-linux-gnu\\libamoeba.a"]
 [Configs.Test.aarch64-linux-gnu]
 LibPaths = ["$(ProjectDir)\\libs\\aarch64-linux-gnu\\libamoeba_d.a"]
 
+# [Configs.Debug.macOS]
+# LibPaths = ["$(ProjectDir)\\libs\\aarch64-macos\\libamoeba_d.a"]
+
+# [Configs.Release.macOS]
+# LibPaths = ["$(ProjectDir)\\libs\\aarch64-macos\\libamoeba.a"]
+
+# [Configs.Test.macOS]
+# LibPaths = ["$(ProjectDir)\\libs\\aarch64-macos\\libamoeba_d.a"]
+
 [Configs.Debug.macOS]
-LibPaths = ["$(ProjectDir)\\libs\\aarch64-macos\\libamoeba_d.a"]
-
-[Configs.Release.macOS]
-LibPaths = ["$(ProjectDir)\\libs\\aarch64-macos\\libamoeba.a"]
-
-[Configs.Test.macOS]
-LibPaths = ["$(ProjectDir)\\libs\\aarch64-macos\\libamoeba_d.a"]
-
-[Configs.Debug.macOS86]
 LibPaths = ["$(ProjectDir)\\libs\\x86_64-macos\\libamoeba_d.a"]
 
-[Configs.Release.macOS86]
+[Configs.Release.macOS]
 LibPaths = ["$(ProjectDir)\\libs\\x86_64-macos\\libamoeba.a"]
 
-[Configs.Test.macOS86]
+[Configs.Test.macOS]
 LibPaths = ["$(ProjectDir)\\libs\\x86_64-macos\\libamoeba_d.a"]
