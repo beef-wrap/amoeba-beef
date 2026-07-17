@@ -29,26 +29,26 @@ jobs:
         with:
           token: ${{ github.token }}
 
-      # - name: Install Zig
-      #   uses: mlugg/setup-zig@v2
-      #   with:
-      #     version: 0.16.0
+      - name: Install Zig
+        uses: mlugg/setup-zig@v2
+        with:
+          version: 0.16.0
 
-      # - name: Install deps (Ubuntu)
-      #   if: contains(matrix.os, 'ubuntu')
-      #   run: |
-      #     wget https://apt.llvm.org/llvm.sh
-      #     chmod +x llvm.sh
-      #     sudo ./llvm.sh 22
-      #     sudo apt-get install -y libhunspell-dev llvm-22-dev
+      - name: Install deps (Ubuntu)
+        if: contains(matrix.os, 'ubuntu')
+        run: |
+          wget https://apt.llvm.org/llvm.sh
+          chmod +x llvm.sh
+          sudo ./llvm.sh 22
+          sudo apt-get install -y libhunspell-dev llvm-22-dev
 
-      # - name: Install deps (MacOS)
-      #   if: contains(matrix.os, 'macos')
-      #   run: |
-      #     brew install hunspell
+      - name: Install deps (MacOS)
+        if: contains(matrix.os, 'macos')
+        run: |
+          brew install hunspell
 
-      # - name: Build C libs
-      #   run: zig build --prefix libs -Dtarget=${{ matrix.target }}
+      - name: Build C libs
+        run: zig build --prefix libs -Dtarget=${{ matrix.target }}
 
       - name: Download BeefBuild
         uses: robinraju/release-downloader@v1
@@ -61,8 +61,5 @@ jobs:
 
       - name: BeefBuild -test
         run: |
-          cd BeefBuild
-          ls -la
-          cd ..
           chmod +x ./BeefBuild/BeefBuild
           ./BeefBuild/BeefBuild -run
