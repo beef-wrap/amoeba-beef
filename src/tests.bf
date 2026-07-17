@@ -8,7 +8,8 @@ static
 	[Test]
 	static void test()
 	{
-		Test.Assert (1 + 1 == 2);
+		Debug.WriteLine("hello world");
+		// Test.Assert (1 + 1 == 2);
 		// first, create a solver:
 		// am_Solver* S = am_newsolver(null, null);
 
