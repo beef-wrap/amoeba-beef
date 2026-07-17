@@ -21,4 +21,4 @@ jobs:
       - run: |
           zig build --prefix libs -Dtarget=${{ matrix.target }}
           cd libs
-          ls -la
+          ls
