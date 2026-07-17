@@ -1,12 +1,13 @@
 const std = @import("std");
 
-const optimize: []const std.builtin.OptimizeMode = &.{
+const optimize_matrix: []const std.builtin.OptimizeMode = &.{
     .Debug,
     .ReleaseSmall,
 };
 
-const targets: []const std.Target.Query = &.{
+const targets_matrix: []const std.Target.Query = &.{
     .{ .cpu_arch = .x86_64, .os_tag = .windows, .abi = .msvc },
+    .{ .cpu_arch = .aarch64, .os_tag = .windows, .abi = .gnu },
 
     .{ .cpu_arch = .x86_64, .os_tag = .linux, .abi = .musl },
     .{ .cpu_arch = .aarch64, .os_tag = .linux, .abi = .musl },
@@ -24,10 +25,16 @@ const lib_name_debug = "amoeba_d";
 const sources = &.{"src/amoeba.c"};
 
 pub fn build(b: *std.Build) !void {
+    const target: []const u8 = b.option([]const u8, "target", "specify target triple") orelse "";
+
     const upstream = b.dependency(upstream_name, .{});
 
-    for (optimize) |o| {
-        for (targets) |t| {
+    std.debug.print("target: {s}", .{target});
+
+    for (optimize_matrix) |o| {
+        for (targets_matrix) |t| {
+            const triple = t.zigTriple(b.allocator) catch "";
+
             const mod = b.createModule(.{
                 .target = b.resolveTargetQuery(t),
                 .optimize = o,
@@ -52,12 +59,14 @@ pub fn build(b: *std.Build) !void {
             const target_output = b.addInstallArtifact(lib, .{
                 .dest_dir = .{
                     .override = .{
-                        .custom = try t.zigTriple(b.allocator),
+                        .custom = triple,
                     },
                 },
             });
 
-            b.getInstallStep().dependOn(&target_output.step);
+            if (std.mem.eql(u8, target, "") or std.mem.eql(u8, target, triple)) {
+                b.getInstallStep().dependOn(&target_output.step);
+            }
         }
     }
 }

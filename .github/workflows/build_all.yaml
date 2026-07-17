@@ -6,6 +6,9 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
+        include:
+          - os: windows-latest
+            target: x86_64-windows-msvc
         # os: [windows-latest, ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
@@ -16,4 +19,6 @@ jobs:
         with:
           version: 0.16.0
       - run: |
-          zig build --prefix libs
+          zig build --prefix libs -Dtarget=${{ matrix.target }}
+          cd libs
+          ls -la
