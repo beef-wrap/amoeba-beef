@@ -28,7 +28,7 @@ jobs:
           #   platform: macOS
           - os: macos-15-intel
             target: x86_64-macos
-            platform: x86_64-macos
+            platform: macOS86
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
