@@ -71,7 +71,7 @@ jobs:
 
       - name: Set static lib path (macOS)
         if: contains(matrix.os, 'macos-15-intel')
-        run: sed -i.bak '/aarch64-macos/x86_64-macos/g' BeefProj.toml
+        run: sed -i.bak 's/aarch64-macos/x86_64-macos/g' BeefProj.toml
 
       - name: BeefBuild -test
         run: ./BeefBuild/BeefBuild -test -platform=${{ matrix.platform }}
