@@ -13,6 +13,15 @@ LibPaths = ["$(ProjectDir)\\libs\\x86_64-windows-msvc\\amoeba.lib"]
 [Configs.Test.Win64]
 LibPaths = ["$(ProjectDir)\\libs\\x86_64-windows-msvc\\amoeba_d.lib"]
 
+[Configs.Debug.aarch64-windows-gnu]
+LibPaths = ["$(ProjectDir)\\libs\\x86_64-windows-msvc\\amoeba_d.lib"]
+
+[Configs.Release.aarch64-windows-gnu]
+LibPaths = ["$(ProjectDir)\\libs\\x86_64-windows-msvc\\amoeba.lib"]
+
+[Configs.Test.aarch64-windows-gnu]
+LibPaths = ["$(ProjectDir)\\libs\\x86_64-windows-msvc\\amoeba_d.lib"]
+
 [Configs.Debug.Linux64]
 LibPaths = ["$(ProjectDir)\\libs\\x86_64-linux-musl\\libamoeba_d.a"]
 
