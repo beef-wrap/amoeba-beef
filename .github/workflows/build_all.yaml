@@ -36,4 +36,6 @@ jobs:
           fileName: '${{ matrix.os }}.zip'
           extract: true
           extract-path: 'BeefBuild'
-      - run: ./BeefBuild/BeefBuild_d -run
+      - run: |
+          chmod +x ./BeefBuild/BeefBuild_d
+          ./BeefBuild/BeefBuild_d -run
