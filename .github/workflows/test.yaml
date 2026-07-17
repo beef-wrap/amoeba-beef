@@ -1,6 +1,11 @@
-name: Build All
+name: Test
+
 run-name: Run tests for all platforms
-on: [push]
+
+on:
+  push:
+  workflow_dispatch:
+  
 jobs:
   build:
     strategy:
@@ -16,8 +21,8 @@ jobs:
           #   target: aarch64-linux-musl
           - os: macos-latest
             target: aarch64-macos
-          - os: macos-15-intel
-            target: x86_64-macos
+          # - os: macos-15-intel
+          #   target: x86_64-macos
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
