@@ -33,7 +33,7 @@ jobs:
         with:
           repository: 'farism/Beef'
           tag: 'nightly-07-17-2026'
-          fileName: '${{ matrix.os }}'
+          fileName: '${{ matrix.os }}.zip'
           extract: true
           extract-path: 'BeefBuild'
       - run: cd BeefBuild && ls
