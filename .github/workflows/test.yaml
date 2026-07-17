@@ -63,4 +63,4 @@ jobs:
       - name: BeefBuild -test
         run: |
           chmod +x ./BeefBuild/BeefBuild
-          ./BeefBuild/BeefBuild -run
+          ./BeefBuild/BeefBuild -test
