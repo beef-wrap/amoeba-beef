@@ -45,7 +45,8 @@ jobs:
       - name: Install deps (MacOS)
         if: contains(matrix.os, 'macos')
         run: |
-          brew install hunspell
+          brew install hunspell llvm@22
+          echo "$(brew --prefix llvm@22)/bin" >> $GITHUB_PATH
 
       - name: Build C libs
         run: zig build --prefix libs -Dtarget=${{ matrix.target }}
