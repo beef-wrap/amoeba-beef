@@ -10,6 +10,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ github.token }}
       - uses: https://codeberg.org/mlugg/setup-zig@v2
       - run: |
           zig build --prefix libs
