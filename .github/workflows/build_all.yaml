@@ -37,6 +37,11 @@ jobs:
           sudo ./llvm.sh 22
           sudo apt-get install -y libhunspell-dev llvm-22-dev
 
+      - name: Install deps (MacOS)
+        if: contains(matrix.os, 'macos')
+        run: |
+          brew install hunspell
+
       - name: Build C libs
         run: zig build --prefix libs -Dtarget=${{ matrix.target }}
 
