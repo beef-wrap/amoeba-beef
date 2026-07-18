@@ -29,8 +29,6 @@ pub fn build(b: *std.Build) !void {
 
     const upstream = b.dependency(upstream_name, .{});
 
-    std.debug.print("target: {s}", .{target});
-
     for (optimize_matrix) |o| {
         for (targets_matrix) |t| {
             const triple = t.zigTriple(b.allocator) catch "";
@@ -45,6 +43,8 @@ pub fn build(b: *std.Build) !void {
             });
 
             mod.linkSystemLibrary("c", .{});
+
+            // mod.linkSystemLibrary("ucrt");
 
             mod.addIncludePath(upstream.path(""));
 

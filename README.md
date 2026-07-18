@@ -1,5 +1,5 @@
 A Beef wrapper for [Amoeba](https://github.com/starwing/amoeba), 
-a Cassowary constraint solving algorithm implements in pure C.
+a Cassowary constraint solving algorithm implemented in pure C.
 
 # Running the example
 
