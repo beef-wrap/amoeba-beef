@@ -6,6 +6,9 @@
             .url = "git+https://github.com/starwing/amoeba.git#c79cd288e515366dc1bf70339dc9db03cca12459",
             .hash = "N-V-__8AAD3LBAC_BFv83wki133T-z7X5lc3HxFGwKiQrtYo",
         },
+        .zbh = .{
+            .path = "../zig-build-helpers",
+        },
     },
     .fingerprint = 0xc3bf239b188678a5,
     .minimum_zig_version = "0.16.0",
